@@ -1,5 +1,6 @@
 package org.csc311.module02uilab;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -57,14 +58,16 @@ public class SplashScreenController implements Runnable {
         } catch (InterruptedException e) {
             System.out.println("Splash screen interrupted");
         }
-//        FXMLLoader loginLoader = new FXMLLoader(SplashScreenController.class.getResource("loginscreen-view.fxml"));
-//        Parent loginScreen = null;
-//        try {
-//            loginScreen = loginLoader.load();
-//        } catch (IOException e) {
-//            System.out.println("Splash screen interrupted");
-//        }
-//        Scene currentScene = rootVbox.getScene();
-//        currentScene.setRoot(loginScreen);
+
+        FXMLLoader loginLoader = new FXMLLoader(StartApplication.class.getResource("loginscreen-view.fxml"));
+        Parent loginRoot = null;
+        try {
+            loginRoot = loginLoader.load();
+        } catch (IOException e) {
+            System.out.println("Splash screen interrupted");
+        }
+        Scene currentScene = rootVbox.getScene();
+        currentScene.setRoot(loginRoot);
+
     }
 }
